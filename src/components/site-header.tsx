@@ -32,20 +32,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <a
-            href={`tel:${siteConfig.phone}`}
-            className="hidden items-center gap-2 text-sm font-semibold text-paper sm:flex"
-          >
-            <Phone className="size-4 text-gold" />
-            {siteConfig.phoneDisplay}
-          </a>
           <Button
             asChild
             className="bg-gold text-primary-foreground hover:bg-gold-bright"
           >
             <a href={`tel:${siteConfig.phone}`}>
               <Phone className="size-4" />
-              Hívjon most
+              {siteConfig.phoneDisplay}
             </a>
           </Button>
         </div>

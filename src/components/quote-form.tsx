@@ -1,37 +1,41 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useActionState, useEffect, useRef } from "react";
+import { useFormStatus } from "react-dom";
 import { Send } from "lucide-react";
-import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/button";
+import { sendQuoteRequest, type QuoteFormState } from "@/app/actions";
 
-export function QuoteForm() {
-  const [sent, setSent] = useState(false);
+const initialState: QuoteFormState = { status: "idle", message: "" };
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const name = String(form.get("name") ?? "");
-    const phone = String(form.get("phone") ?? "");
-    const carInfo = String(form.get("carInfo") ?? "");
-
-    const subject = `Ajánlatkérés – ${name || "névtelen érdeklődő"}`;
-    const body = [
-      `Név: ${name}`,
-      `Telefonszám: ${phone}`,
-      "",
-      "Az autó adatai:",
-      carInfo,
-    ].join("\n");
-
-    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
-  }
+function SubmitButton() {
+  const { pending } = useFormStatus();
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <Button
+      type="submit"
+      size="lg"
+      disabled={pending}
+      className="w-full bg-gold text-primary-foreground hover:bg-gold-bright sm:w-auto"
+    >
+      <Send className="size-4" />
+      {pending ? "Küldés…" : "Ajánlatkérés elküldése"}
+    </Button>
+  );
+}
+
+export function QuoteForm() {
+  const [state, formAction] = useActionState(sendQuoteRequest, initialState);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (state.status === "success") {
+      formRef.current?.reset();
+    }
+  }, [state]);
+
+  return (
+    <form ref={formRef} action={formAction} className="space-y-4">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
           <label htmlFor="name" className="text-sm font-medium text-steel">
@@ -74,19 +78,18 @@ export function QuoteForm() {
         />
       </div>
 
-      <Button
-        type="submit"
-        size="lg"
-        className="w-full bg-gold text-primary-foreground hover:bg-gold-bright sm:w-auto"
-      >
-        <Send className="size-4" />
-        Ajánlatkérés elküldése
-      </Button>
+      <SubmitButton />
 
-      {sent && (
-        <p className="text-sm text-gold-bright" role="status">
-          Megnyitottuk az emailküldőt az adataival kitöltve – csak küldje el,
-          és hamarosan jelentkezünk.
+      {state.status !== "idle" && (
+        <p
+          role="status"
+          className={
+            state.status === "success"
+              ? "text-sm text-gold-bright"
+              : "text-sm text-red-400"
+          }
+        >
+          {state.message}
         </p>
       )}
     </form>
