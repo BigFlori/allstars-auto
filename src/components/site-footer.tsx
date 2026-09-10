@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
@@ -82,8 +83,21 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-line px-4 py-5 text-center text-xs text-muted-foreground sm:px-6">
-        © {year} {siteConfig.name}. Minden jog fenntartva.
+      <div className="flex flex-col items-center gap-3 border-t border-line px-4 py-5 text-center text-xs text-muted-foreground sm:flex-row sm:justify-between sm:px-6 sm:text-left">
+        <p>
+          © {year} {siteConfig.name}. Minden jog fenntartva.
+        </p>
+        <nav className="flex items-center gap-4">
+          <Link href="/impresszum" className="hover:text-gold-bright">
+            Impresszum
+          </Link>
+          <Link
+            href="/adatkezelesi-tajekoztato"
+            className="hover:text-gold-bright"
+          >
+            Adatkezelési tájékoztató
+          </Link>
+        </nav>
       </div>
     </footer>
   );

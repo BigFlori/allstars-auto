@@ -2,8 +2,10 @@
 
 import { useActionState, useEffect, useRef } from "react";
 import { useFormStatus } from "react-dom";
+import Link from "next/link";
 import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { quoteFieldLimits } from "@/lib/quote-limits";
 import { sendQuoteRequest, type QuoteFormState } from "@/app/actions";
 
 const initialState: QuoteFormState = { status: "idle", message: "" };
@@ -45,6 +47,7 @@ export function QuoteForm() {
             id="name"
             name="name"
             required
+            maxLength={quoteFieldLimits.name}
             className="h-11 w-full rounded-md border border-border bg-panel px-3.5 text-paper outline-none placeholder:text-steel/50 focus:border-gold"
             placeholder="Kovács János"
           />
@@ -58,6 +61,7 @@ export function QuoteForm() {
             name="phone"
             type="tel"
             required
+            maxLength={quoteFieldLimits.phone}
             className="h-11 w-full rounded-md border border-border bg-panel px-3.5 text-paper outline-none placeholder:text-steel/50 focus:border-gold"
             placeholder="+36 30 000 0000"
           />
@@ -73,12 +77,35 @@ export function QuoteForm() {
           name="carInfo"
           rows={4}
           required
+          maxLength={quoteFieldLimits.carInfo}
           className="w-full resize-none rounded-md border border-border bg-panel px-3.5 py-2.5 text-paper outline-none placeholder:text-steel/50 focus:border-gold"
           placeholder="Márka, típus, évjárat, állapot – amit fontosnak tart"
         />
       </div>
 
+      <div aria-hidden className="sr-only">
+        <label htmlFor="website">Weboldal</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <SubmitButton />
+
+      <p className="text-xs text-steel">
+        Az ajánlatkérés elküldésével elfogadja az{" "}
+        <Link
+          href="/adatkezelesi-tajekoztato"
+          className="underline underline-offset-2 hover:text-gold-bright"
+        >
+          adatkezelési tájékoztatóban
+        </Link>{" "}
+        foglalt adatkezelést.
+      </p>
 
       {state.status !== "idle" && (
         <p
