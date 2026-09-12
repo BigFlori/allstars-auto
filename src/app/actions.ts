@@ -157,8 +157,9 @@ export async function sendQuoteRequest(
   ) {
     return {
       status: "error",
-      message:
-        "A fotók mérete vagy formátuma nem megfelelő. Kérjük, JPG vagy PNG képeket töltsön fel, egyenként max. 5 MB méretben.",
+      message: `A fotók mérete vagy formátuma nem megfelelő. Kérjük, JPG vagy PNG képeket töltsön fel, egyenként max. ${
+        quotePhotoLimits.maxSizePerFile / (1024 * 1024)
+      } MB méretben.`,
     };
   }
 

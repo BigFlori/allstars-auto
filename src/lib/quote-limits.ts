@@ -14,7 +14,7 @@ export const quoteFieldLimits = {
 
 export const quotePhotoLimits = {
   maxCount: 7,
-  maxSizePerFile: 5 * 1024 * 1024,
-  maxTotalSize: 20 * 1024 * 1024,
+  maxSizePerFile: 4 * 1024 * 1024,
+  maxTotalSize: 15 * 1024 * 1024,
   acceptedTypes: ["image/jpeg", "image/png", "image/webp"],
 } as const;

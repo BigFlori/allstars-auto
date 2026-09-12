@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import Link from "next/link";
 import { Send, Upload, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { compressImage } from "@/lib/compress-image";
 import { quoteFieldLimits, quotePhotoLimits } from "@/lib/quote-limits";
 import { sendQuoteRequest, type QuoteFormState } from "@/app/actions";
 
@@ -75,6 +76,7 @@ type PhotoFile = {
 function PhotoUploader({ id }: { id: string }) {
   const [photos, setPhotos] = useState<PhotoFile[]>([]);
   const [error, setError] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -91,7 +93,7 @@ function PhotoUploader({ id }: { id: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function addFiles(fileList: FileList | null) {
+  async function addFiles(fileList: FileList | null) {
     if (!fileList) return;
     setError("");
 
@@ -103,8 +105,12 @@ function PhotoUploader({ id }: { id: string }) {
       setError("Csak JPG, PNG vagy WebP képeket tud feltölteni.");
     }
 
+    setIsProcessing(true);
+    const compressed = await Promise.all(incoming.map((file) => compressImage(file)));
+    setIsProcessing(false);
+
     setPhotos((prev) => {
-      const combined = [...prev, ...incoming.map((file) => ({
+      const combined = [...prev, ...compressed.map((file) => ({
         id: `${file.name}-${file.size}-${Math.random().toString(36).slice(2)}`,
         file,
         previewUrl: URL.createObjectURL(file),
@@ -168,17 +174,21 @@ function PhotoUploader({ id }: { id: string }) {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="flex size-20 shrink-0 flex-col items-center justify-center gap-1 rounded-md border border-border text-steel transition-colors hover:border-gold hover:text-gold-bright"
+              disabled={isProcessing}
+              className="flex size-20 shrink-0 flex-col items-center justify-center gap-1 rounded-md border border-border text-steel transition-colors hover:border-gold hover:text-gold-bright disabled:opacity-50"
             >
               <Upload className="size-5" />
-              <span className="text-[0.65rem]">Tallózás</span>
+              <span className="text-[0.65rem]">
+                {isProcessing ? "Feldolgozás…" : "Tallózás"}
+              </span>
             </button>
           )}
         </div>
 
         <p className="mt-3 text-xs text-steel">
           Kattintson a képek feltöltéséhez, vagy húzza ide a fájlokat (max.{" "}
-          {quotePhotoLimits.maxCount} kép, JPG, PNG)
+          {quotePhotoLimits.maxCount} kép, JPG, PNG). A képeket automatikusan
+          tömörítjük feltöltés előtt.
         </p>
       </div>
 
