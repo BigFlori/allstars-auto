@@ -1,6 +1,6 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { QuoteForm } from "@/components/quote-form";
+import { Button } from "@/components/ui/button";
 
 export function ContactSection() {
   const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(
@@ -14,16 +14,12 @@ export function ContactSection() {
           Kérjen ajánlatot még ma
         </h2>
         <p className="mt-3 max-w-lg text-steel">
-          Hívjon telefonon, vagy töltse ki az űrlapot – mindkettő ugyanolyan
-          gyorsan célba ér.
+          Hívjon telefonon, vagy töltse ki az űrlapot fent – mindkettő
+          ugyanolyan gyorsan célba ér.
         </p>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-5 lg:gap-14">
-          <div className="lg:col-span-3">
-            <QuoteForm />
-          </div>
-
-          <div className="space-y-6 lg:col-span-2">
+        <div className="mt-10 grid gap-10 lg:grid-cols-5 lg:gap-14">
+          <div className="flex flex-col items-start gap-4 lg:col-span-2">
             <div className="space-y-4 rounded-lg border border-border/60 bg-panel/40 p-6">
               <a
                 href={`tel:${siteConfig.phone}`}
@@ -55,17 +51,25 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-lg border border-border/60">
-              <iframe
-                title="Allstars Autó telephelye a térképen"
-                src={mapSrc}
-                width="100%"
-                height="240"
-                style={{ border: 0, filter: "grayscale(0.3) invert(0.92) contrast(0.9)" }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+            <Button
+              asChild
+              size="lg"
+              className="w-full bg-gold text-primary-foreground hover:bg-gold-bright sm:w-auto"
+            >
+              <a href="#ajanlatkeres">Ajánlatkérő űrlap kitöltése</a>
+            </Button>
+          </div>
+
+          <div className="overflow-hidden rounded-lg border border-border/60 lg:col-span-3">
+            <iframe
+              title="Allstars Autó telephelye a térképen"
+              src={mapSrc}
+              width="100%"
+              height="360"
+              style={{ border: 0, filter: "grayscale(0.3) invert(0.92) contrast(0.9)" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </div>
       </div>

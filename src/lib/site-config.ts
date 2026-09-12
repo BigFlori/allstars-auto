@@ -31,4 +31,7 @@ export const siteConfig = {
     lat: 47.2306,
     lng: 16.6218,
   },
+  social: {
+    facebook: "https://www.facebook.com/profile.php?id=61573934900127",
+  },
 } as const;

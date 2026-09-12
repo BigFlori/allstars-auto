@@ -1,13 +1,39 @@
+import type { SVGProps } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+
+function FacebookIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.9.25-1.5 1.55-1.5H16.5V4.3c-.27-.04-1.2-.12-2.28-.12-2.26 0-3.8 1.38-3.8 3.9V10.5H8v3h2.42V21h3.08Z" />
+    </svg>
+  );
+}
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-line bg-panel">
+      <div className="border-b border-line bg-ink">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 sm:px-6">
+          <p className="font-heading text-lg font-medium text-paper sm:text-xl">
+            Egy helyen minden, ami autó!
+          </p>
+          <a
+            href={siteConfig.social.facebook}
+            target="_blank"
+            rel="noreferrer noopener"
+            aria-label="Allstars Autó Facebook oldala"
+            className="flex size-9 items-center justify-center rounded-full border border-border/60 text-steel transition-colors hover:border-gold hover:text-gold-bright"
+          >
+            <FacebookIcon className="size-4" />
+          </a>
+        </div>
+      </div>
+
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.2fr_1fr_1fr]">
         <div>
           <Image

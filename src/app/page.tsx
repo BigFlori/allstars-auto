@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/hero";
 import { ServiceArea } from "@/components/service-area";
+import { WhyUsSection } from "@/components/why-us-section";
 import { ProcessSection } from "@/components/process-section";
 import { CarTypesSection } from "@/components/car-types-section";
 import { ComparisonSection } from "@/components/comparison-section";
@@ -19,6 +20,7 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <ServiceArea />
+        <WhyUsSection />
         <ProcessSection />
         <CarTypesSection />
         <ComparisonSection />

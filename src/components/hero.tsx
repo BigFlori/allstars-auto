@@ -1,84 +1,77 @@
 import Image from "next/image";
-import { Phone, MessageCircle, Banknote, ClipboardCheck, FileCheck2 } from "lucide-react";
+import { Handshake, ShieldCheck, Clock, Banknote, MapPin } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { Button } from "@/components/ui/button";
-import { BorderBeam } from "@/components/ui/border-beam";
+import { QuoteForm } from "@/components/quote-form";
 
 const trustFacts = [
-  { icon: Banknote, label: "Készpénz a helyszínen" },
-  { icon: ClipboardCheck, label: "Ingyenes, kötelezettség nélküli felmérés" },
-  { icon: FileCheck2, label: "A papírmunkát mi intézzük" },
+  { icon: Handshake, label: "Azonnali felvásárlás" },
+  { icon: ShieldCheck, label: "Korrekt ajánlat" },
+  { icon: Clock, label: "Gyors ügyintézés" },
+  { icon: Banknote, label: "Készpénz fizetés" },
 ];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border/60 bg-ink">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(60rem 30rem at 15% -10%, color-mix(in oklch, var(--gold) 16%, transparent), transparent), radial-gradient(40rem 24rem at 100% 10%, color-mix(in oklch, var(--steel) 10%, transparent), transparent)",
-        }}
-      />
+    <section id="ajanlatkeres" className="relative overflow-hidden border-b border-border/60 bg-ink">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero-dealership.webp"
+          alt="Allstars Autó telephelye Szombathelyen, kirakott autókkal"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/85 to-ink" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent" />
+      </div>
 
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-4 pt-16 pb-20 sm:px-6 sm:pt-20 sm:pb-28 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:pt-24">
-        <div>
-          <h1 className="font-heading text-5xl font-semibold leading-[1.05] tracking-tight text-paper sm:text-6xl">
-            Eladná az autóját? Készpénzben fizetünk érte, még ma.
+      <div className="relative mx-auto max-w-6xl px-4 pt-16 pb-20 sm:px-6 sm:pt-20 sm:pb-24 lg:pt-24">
+        <div className="max-w-2xl">
+          <p className="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-gold-bright">
+            Autófelvásárlás Vas megyéből
+          </p>
+          <h1 className="mt-3 font-heading text-4xl font-semibold leading-[1.05] tracking-tight text-paper sm:text-5xl lg:text-6xl">
+            Eladná autóját? Töltse ki az alábbi kérdéseket, és{" "}
+            <span className="text-gold-bright">akár még ma felvásároljuk</span>{" "}
+            – készpénzben.
           </h1>
 
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-steel">
-            Egy hívás, és kimegyünk megnézni Szombathelyen vagy a környező
-            településeken. Sérült, hiteles vagy egyszerűen csak megunt autóját
-            is helyben, készpénzben kifizetjük.
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-steel">
+            Töltse ki az alábbi kérdéseket, és kollégáink hamarosan felveszik
+            Önnel a kapcsolatot – sérült, hiteles vagy egyszerűen csak megunt
+            autóját is helyben, készpénzben kifizetjük.
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Button
-              asChild
-              size="lg"
-              className="bg-gold text-primary-foreground hover:bg-gold-bright h-13 px-8 text-base font-semibold"
-            >
-              <a href={`tel:${siteConfig.phone}`}>
-                <Phone className="size-5" />
-                Hívjon most: {siteConfig.phoneDisplay}
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="h-13 border-steel/40 bg-transparent px-8 text-base text-paper hover:bg-secondary hover:text-paper"
-            >
-              <a href="#kapcsolat">
-                <MessageCircle className="size-5" />
-                Kérek ingyenes ajánlatot
-              </a>
-            </Button>
+          <div className="mt-6 flex items-center gap-2 text-sm text-steel">
+            <MapPin className="size-4 shrink-0 text-gold" />
+            <span>
+              ALLSTARS AUTÓ SZOMBATHELY — {siteConfig.address.postalCode}{" "}
+              {siteConfig.address.city}, {siteConfig.address.street}
+            </span>
           </div>
 
-          <dl className="mt-12 grid grid-cols-1 gap-4 border-t border-border/60 pt-8 sm:grid-cols-3">
+          <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4">
             {trustFacts.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3">
-                <Icon className="size-5 shrink-0 text-gold" />
-                <dt className="text-sm text-steel">{label}</dt>
+              <div key={label} className="flex flex-col items-start gap-2">
+                <Icon className="size-6 text-gold" strokeWidth={1.75} />
+                <dt className="text-sm font-medium text-paper">{label}</dt>
               </div>
             ))}
           </dl>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-          <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-panel/50 p-8 sm:p-10">
-            <BorderBeam size={140} duration={10} colorFrom="#cf9f42" colorTo="#f0c164" />
-            <Image
-              src="/images/logo-hero.webp"
-              alt="Allstars Autó logó"
-              width={868}
-              height={310}
-              priority
-              className="w-full"
-            />
+        <div className="relative mt-12 overflow-hidden rounded-2xl border border-gold/30 bg-panel/80 p-6 shadow-2xl shadow-black/40 backdrop-blur sm:p-8 lg:p-10">
+          <h2 className="font-heading text-2xl font-semibold text-paper sm:text-3xl">
+            Kérjen ajánlatot most!
+          </h2>
+          <p className="mt-2 text-sm text-steel">
+            Töltse ki az alábbi adatokat, és kollégáink hamarosan felveszik
+            Önnel a kapcsolatot!
+          </p>
+
+          <div className="mt-8">
+            <QuoteForm />
           </div>
         </div>
       </div>
