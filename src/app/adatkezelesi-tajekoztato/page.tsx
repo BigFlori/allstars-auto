@@ -72,21 +72,6 @@ export default function AdatkezelesiTajekoztatoPage() {
             </div>
           </dl>
 
-          {/* ------------------------------------------------------------------
-              SABLON-FIGYELMEZTETÉS – élesítés után törölhető.
-              Törléshez egyszerűen távolítsa el az alábbi <aside> blokkot
-              a záró </aside> tagig, valamint ezt a kommentet.
-             ------------------------------------------------------------------ */}
-          <aside className="mt-8 rounded-lg border border-gold/40 bg-gold/5 p-5 text-sm leading-relaxed text-steel">
-            <p>
-              <span className="font-medium text-gold-bright">Megjegyzés.</span>{" "}
-              Ez a tájékoztató sablon alapján készült, és általános tartalmat
-              követ. Élesítés előtt érdemes ügyvéddel átnézetni, hogy pontosan
-              illeszkedjen a vállalkozás tényleges működéséhez.
-            </p>
-          </aside>
-          {/* ------------------ SABLON-FIGYELMEZTETÉS VÉGE ------------------- */}
-
           <Section title="1. Az adatkezelő adatai">
             <dl className="space-y-2">
               <div className="flex flex-wrap gap-x-2">
