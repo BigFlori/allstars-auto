@@ -138,18 +138,33 @@ export default function AdatkezelesiTajekoztatoPage() {
                 visszahíváskor elérjük Önt.
               </li>
               <li>
+                <span className="text-paper">Email cím</span> – hogy
+                visszaigazolást és – szükség esetén – az ajánlatot írásban is
+                el tudjuk küldeni. Az űrlap elküldése után erre a címre
+                automatikus visszaigazoló e-mailt kap.
+              </li>
+              <li>
                 <span className="text-paper">
-                  Az autóra vonatkozó szabadszöveges leírás
+                  Az autóra vonatkozó adatok
                 </span>{" "}
-                (márka, típus, évjárat, állapot és minden egyéb, amit fontosnak
-                tart) – ez alapján tudunk árajánlatot adni.
+                – márka, típus, évjárat, km-óra állása és üzemanyag/motortípus
+                (ezeket legördülő listából választja ki), valamint – ha
+                megadja – a rendszám, illetve a szabadszöveges megjegyzés és a
+                hibák leírása.
+              </li>
+              <li>
+                <span className="text-paper">Fotók az autóról</span> (opcionális)
+                – az Ön eszközén tömörítve, majd feltöltve, kizárólag az
+                árajánlat elkészítéséhez. Kérjük, csak olyan fotót töltsön fel,
+                amelyen nem szerepel más személy vagy olyan adat, amelyet nem
+                szeretne megosztani.
               </li>
             </ul>
             <p>
-              A szabadszöveges mező tartalmát Ön határozza meg. Kérjük, hogy oda
-              csak az ajánlatadáshoz szükséges információt írja, és ne adjon meg
-              különleges (pl. egészségügyi) adatot vagy harmadik személyre
-              vonatkozó adatot.
+              A szabadszöveges mezők (megjegyzés, hibák) tartalmát Ön határozza
+              meg. Kérjük, hogy oda csak az ajánlatadáshoz szükséges
+              információt írja, és ne adjon meg különleges (pl. egészségügyi)
+              adatot vagy harmadik személyre vonatkozó adatot.
             </p>
             <p>
               Ha telefonon vagy e-mailben veszi fel velünk a kapcsolatot, az
@@ -158,12 +173,19 @@ export default function AdatkezelesiTajekoztatoPage() {
               szerint kezeljük.
             </p>
             <p>
-              A weboldalt kiszolgáló szerver a működés biztosítása és
-              biztonsága érdekében technikai naplókat készít, amelyek – rövid
-              ideig – tartalmazhatják a látogató IP-címét, a kérés időpontját és
-              a böngésző típusát. Ezekhez az adatokhoz a tárhelyszolgáltató
-              rendszerén keresztül férünk hozzá, és azokat nem kapcsoljuk össze
-              az űrlapon megadott adatokkal.
+              Visszaélés (pl. tömeges, automatizált beküldés) megelőzése
+              érdekében az űrlap beküldésekor a látogató IP-címét rövid ideig,
+              a szerver memóriájában eltároljuk annak méréséhez, hogy rövid
+              időn belül hányszor küldött be ajánlatkérést; ezt az adatot nem
+              kapcsoljuk össze az űrlapon megadott többi adattal, és nem
+              tároljuk tartósan.
+            </p>
+            <p>
+              A weboldalt kiszolgáló szerver ezen felül a működés biztosítása
+              és biztonsága érdekében technikai naplókat készít, amelyek –
+              rövid ideig – tartalmazhatják a látogató IP-címét, a kérés
+              időpontját és a böngésző típusát. Ezekhez az adatokhoz a
+              tárhelyszolgáltató rendszerén keresztül férünk hozzá.
             </p>
           </Section>
 
