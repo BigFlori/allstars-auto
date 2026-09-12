@@ -32,13 +32,13 @@ export const legalConfig = {
      * Pl.: "Molnár Car Invest Korlátolt Felelősségű Társaság" vagy
      * egyéni vállalkozó esetén a saját teljes neve.
      */
-    name: "[KITÖLTENDŐ: a vállalkozás teljes, hivatalos neve]",
+    name: "Molnár Car Invest Kft.",
 
     /**
      * A rövidített cégnév (pl. "Molnár Car Invest Kft.").
      * Egyéni vállalkozó esetén ide is a saját nevét írja.
      */
-    shortName: "[KITÖLTENDŐ: rövidített cégnév]",
+    shortName: "Molnár Car Invest Kft.",
 
     /**
      * A bejegyzett székhely címe. Alapértelmezésben a weboldalon
@@ -46,7 +46,7 @@ export const legalConfig = {
      * HA a bejegyzett székhely eltér a telephelytől, írja felül itt
      * a teljes címmel, pl.: "9700 Szombathely, Fő tér 1. 2. em. 4."
      */
-    headquarters: siteAddressLine,
+    headquarters: "9730 Kőszeg, Várkör 61. 2. em. 12/a. ajtó",
 
     /**
      * A telephely / ügyfélfogadás címe. Ha megegyezik a székhellyel,
@@ -58,20 +58,20 @@ export const legalConfig = {
      * Adószám. Megtalálja a cégkivonaton, vagy a NAV
      * adószám-kereső oldalán. Formátum: 12345678-2-18
      */
-    taxNumber: "[KITÖLTENDŐ: adószám, pl. 12345678-2-18]",
+    taxNumber: "24396411-2-18",
 
     /**
      * Cégjegyzékszám (Kft./Bt. esetén, formátum: 18-09-123456),
      * VAGY egyéni vállalkozó esetén a nyilvántartási szám.
      */
-    registrationNumber: "[KITÖLTENDŐ: cégjegyzékszám vagy egyéni vállalkozói nyilvántartási szám]",
+    registrationNumber: "18-09-111779",
 
     /**
      * Mi ez a szám? A megnevezés az oldalon a szám előtt jelenik meg.
      * Cég esetén: "Cégjegyzékszám", egyéni vállalkozó esetén:
      * "Nyilvántartási szám".
      */
-    registrationLabel: "[KITÖLTENDŐ: Cégjegyzékszám VAGY Nyilvántartási szám]",
+    registrationLabel: "Cégjegyzékszám",
 
     /**
      * A nyilvántartást vezető bíróság / hatóság.
@@ -79,12 +79,12 @@ export const legalConfig = {
      * Egyéni vállalkozó esetén: "Belügyminisztérium – Egyéni Vállalkozók
      * Nyilvántartása (nyilvantarto.hu)".
      */
-    registryAuthority: "[KITÖLTENDŐ: nyilvántartó bíróság / hatóság]",
+    registryAuthority: "Szombathelyi Törvényszék Cégbírósága",
 
     /**
      * A képviseletre jogosult személy neve (ügyvezető / egyéni vállalkozó).
      */
-    representative: "[KITÖLTENDŐ: képviselő (ügyvezető) neve]",
+    representative: "Molnár Kristóf",
 
     /**
      * Uniós adószám (közösségi adószám). Csak akkor töltse ki, ha van.
@@ -146,26 +146,26 @@ export const legalConfig = {
      * Az adatkezelő megnevezése. Ez jellemzően ugyanaz, mint a
      * szolgáltató teljes neve – ha igen, írja ide ugyanazt.
      */
-    controllerName: "[KITÖLTENDŐ: az adatkezelő megnevezése (általában a cég teljes neve)]",
+    controllerName: "Molnár Car Invest Kft.",
 
     /**
      * Adatvédelmi kérdésekben megkeresésre használható e-mail cím.
      * Lehet ugyanaz, mint az általános e-mail cím – ha igen, cserélje
      * ezt a sort erre: siteConfig.email
      */
-    contactEmail: "[KITÖLTENDŐ: adatvédelmi kapcsolattartó e-mail címe]",
+    contactEmail: siteConfig.email,
 
     /**
      * Az adatkezelés kezdő időpontja – jellemzően a weboldal
      * élesítésének dátuma. Formátum: 2026. január 1.
      */
-    effectiveDate: "[KITÖLTENDŐ: adatkezelés kezdő dátuma, pl. 2026. január 1.]",
+    effectiveDate: "2026. szeptember 12.",
 
     /**
      * A tájékoztató utolsó módosításának dátuma. Minden módosításkor
      * frissítse. Formátum: 2026. január 1.
      */
-    lastUpdated: "[KITÖLTENDŐ: utolsó módosítás dátuma, pl. 2026. január 1.]",
+    lastUpdated: "2026. szeptember 12.",
 
     /**
      * Az ajánlatkérések megőrzési ideje. Az alábbi érték egy szokásos,
