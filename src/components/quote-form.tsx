@@ -333,6 +333,25 @@ export function QuoteForm() {
         </div>
       </div>
 
+      <div className="space-y-1.5">
+        <label htmlFor="location" className="text-sm font-medium text-steel">
+          Az autó tartózkodási helye <span className="text-red-400">*</span>
+        </label>
+        <input
+          id="location"
+          name="location"
+          required
+          autoComplete="address-level2"
+          maxLength={quoteFieldLimits.location}
+          placeholder="Pl.: Szombathely"
+          aria-describedby="location-help"
+          className={inputClass}
+        />
+        <p id="location-help" className="text-xs text-steel/70">
+          Elég a település neve, pontos címet nem kérünk.
+        </p>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-1.5">
           <label htmlFor="notes" className="text-sm font-medium text-steel">

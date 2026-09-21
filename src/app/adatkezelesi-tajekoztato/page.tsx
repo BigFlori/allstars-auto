@@ -153,6 +153,15 @@ export default function AdatkezelesiTajekoztatoPage() {
                 hibák leírása.
               </li>
               <li>
+                <span className="text-paper">
+                  Az autó tartózkodási helye
+                </span>{" "}
+                – a település neve (kötelező mező), hogy fel tudjuk mérni, az
+                autó megtekintése vagy átvétele hol és hogyan szervezhető.
+                Pontos címet nem kérünk; kérjük, csak a település nevét adja
+                meg.
+              </li>
+              <li>
                 <span className="text-paper">Fotók az autóról</span> (opcionális)
                 – az Ön eszközén tömörítve, majd feltöltve, kizárólag az
                 árajánlat elkészítéséhez. Kérjük, csak olyan fotót töltsön fel,
@@ -198,8 +207,8 @@ export default function AdatkezelesiTajekoztatoPage() {
                 – Jogalap: a GDPR 6. cikk (1) bekezdés b) pontja, azaz a
                 szerződés megkötését megelőzően az Ön kérésére történő lépések
                 megtétele. Ön azért adja meg az adatait, hogy árajánlatot
-                kapjon az autójára; ezek nélkül az ajánlatot nem tudjuk
-                elkészíteni.
+                kapjon az autójára; ezek – így az autó tartózkodási helye is –
+                nélkül az ajánlatot nem tudjuk elkészíteni.
               </li>
               <li>
                 <span className="text-paper">

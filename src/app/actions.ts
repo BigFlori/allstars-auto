@@ -96,6 +96,7 @@ export async function sendQuoteRequest(
   const mileage = String(formData.get("mileage") ?? "").trim();
   const fuelType = String(formData.get("fuelType") ?? "").trim();
   const plate = String(formData.get("plate") ?? "").trim();
+  const location = String(formData.get("location") ?? "").trim();
   const notes = String(formData.get("notes") ?? "").trim();
   const defects = String(formData.get("defects") ?? "").trim();
   const consent = formData.get("consent") === "on";
@@ -112,6 +113,7 @@ export async function sendQuoteRequest(
     !year ||
     !mileage ||
     !fuelType ||
+    !location ||
     !consent
   ) {
     return { status: "error", message: "Kérjük, töltse ki a kötelező mezőket." };
@@ -127,6 +129,7 @@ export async function sendQuoteRequest(
     [mileage, "mileage", quoteFieldLimits.mileage],
     [fuelType, "fuelType", quoteFieldLimits.fuelType],
     [plate, "plate", quoteFieldLimits.plate],
+    [location, "location", quoteFieldLimits.location],
     [notes, "notes", quoteFieldLimits.notes],
     [defects, "defects", quoteFieldLimits.defects],
   ];
@@ -203,6 +206,7 @@ export async function sendQuoteRequest(
       mileage ? `Km futás: ${mileage}` : null,
       fuelType ? `Motortípus / Üzemanyag: ${fuelType}` : null,
       plate ? `Rendszám: ${plate}` : null,
+      `Tartózkodási hely: ${location}`,
       defects ? `\nAutó hibái:\n${defects}` : null,
       notes ? `\nMegjegyzés:\n${notes}` : null,
       attachments.length ? `\nMellékelt fotók: ${attachments.length} db` : null,
@@ -237,6 +241,7 @@ export async function sendQuoteRequest(
         `Típus: ${model}`,
         year ? `Évjárat: ${year}` : null,
         mileage ? `Km futás: ${mileage}` : null,
+        `Tartózkodási hely: ${location}`,
         "",
         "Ez egy automatikus visszaigazoló email, kérjük ne válaszoljon rá, mivel ezt a postafiókot nem figyeljük.",
         `Ha kérdése van, hívjon minket a ${siteConfig.phoneDisplay} számon.`,

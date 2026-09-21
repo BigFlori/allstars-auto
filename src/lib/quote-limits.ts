@@ -8,6 +8,7 @@ export const quoteFieldLimits = {
   mileage: 10,
   fuelType: 30,
   plate: 20,
+  location: 80,
   notes: 800,
   defects: 800,
 } as const;

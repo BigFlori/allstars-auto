@@ -165,7 +165,7 @@ export const legalConfig = {
      * A tájékoztató utolsó módosításának dátuma. Minden módosításkor
      * frissítse. Formátum: 2026. január 1.
      */
-    lastUpdated: "2026. szeptember 12.",
+    lastUpdated: "2026. szeptember 21.",
 
     /**
      * Az ajánlatkérések megőrzési ideje. Az alábbi érték egy szokásos,
